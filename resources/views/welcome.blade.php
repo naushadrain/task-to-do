@@ -9,14 +9,24 @@
         <div class="auth-card">
             <!-- Login Form Section -->
             <div id="login-form" class="form-section">
+                @if(session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Success!</strong> {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+
+@if(session('error'))
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Error!</strong> {{ session('error') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+
                 <h2 class="text-center mb-4 fw-bold">Welcome Back!</h2>
 
                 <form method="POST" action="{{ route('auth.login') }}">
                     @csrf
-
-                    @if (session('error'))
-                        <div class="alert alert-danger">{{ session('error') }}</div>
-                    @endif
 
                     <div class="mb-3">
                         <label for="loginInput" class="form-label">Email or Phone Number</label>

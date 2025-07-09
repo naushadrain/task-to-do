@@ -34,7 +34,10 @@ class RegisterCredentialsController extends Controller
 
         $imagePath = null;
         if ($request->hasFile('profile')) {
-            $imagePath = $request->file('profile')->storeAs('profile_folder', time() . '.' . $request->file('profile')->getClientOriginalExtension(), 'public');
+            $imageFIle = $request->file('profile');
+            $folder = 'profile_folder';
+            $fileName = time() . '.' . $imageFIle->getClientOriginalExtension();
+            $profileImagePath = $imageFIle->storeAs($folder, $fileName, 'public');
         }
 
         $user = User::create([
@@ -43,7 +46,7 @@ class RegisterCredentialsController extends Controller
             'password' => Hash::make($request->password),
             'number' => $request->number,
             'gender' => $request->gender,
-            'profile_image' => $imagePath,
+            'profile' => $profileImagePath,
             'status' => 1,
             'role' => 'user'
         ]);
