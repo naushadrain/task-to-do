@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\TaskAssignController;
 use App\Http\Controllers\Admin\UserManagementController;
 use App\Http\Controllers\Admin\ViewAllTaskController;
 use App\Http\Controllers\AdminHomeController;
@@ -20,9 +21,14 @@ Route::post('/logout', [LoginCredentialsController::class, 'logout'])->name('log
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminHomeController::class, 'index'])->name('admin.dashboard');
     Route::get('/admin/view-all-task', [ViewAllTaskController::class, 'index'])->name('all.task.index');
+    Route::get('/admin/tasks/search', [ViewAllTaskController::class, 'search']);
+
     Route::get('/admin/user-manage', [UserManagementController::class, 'index'])->name('user.manage.index');
     Route::post('/admin/user/toggle-status', [UserManagementController::class, 'toggleStatus'])->name('admin.user.toggleStatus');
-
+    Route::get('/admin/task/assign', [TaskAssignController::class, 'index'])->name('admin.task.assign');
+    Route::get('/admin/task/{id}/edit', [TaskAssignController::class, 'edit'])->name('admin.task.edit');
+    Route::post('/admin/task/{id}/update', [TaskAssignController::class, 'update'])->name('admin.task.update');
+    Route::post('/admin/task/assign', [TaskAssignController::class, 'store'])->name('admin.assign.task');
 });
 
 // User-only

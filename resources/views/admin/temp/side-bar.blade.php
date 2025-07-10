@@ -10,8 +10,8 @@
         <i class="fas fa-chart-line fa-fw me-3"></i><span>Tasks</span>
     </a>
 
-    <a href="#" class="list-group-item list-group-item-action bg-dark text-white border-0 py-3 text-decoration-none">
-        <i class="fas fa-box-open fa-fw me-3"></i><span>Products</span>
+    <a href="{{route('admin.task.assign')}}" class="list-group-item list-group-item-action bg-dark text-white border-0 py-3 text-decoration-none">
+        <i class="fas fa-box-open fa-fw me-3"></i><span>Tasks Assign</span>
     </a>
 
     <a href="#" class="list-group-item list-group-item-action bg-dark text-white border-0 py-3 text-decoration-none">

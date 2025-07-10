@@ -14,6 +14,8 @@ class Task extends Model
         'assigned_to',
         'assigned_date',
         'completed_date',
+        'due_date',
+        'priority',
     ];
 
     public function creator()
