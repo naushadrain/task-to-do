@@ -3,7 +3,7 @@
     <div class="row">
         <!-- Card: Total Users -->
         <div class="col-md-4 mb-4">
-            <div class="card shadow-sm border-0">
+            <div class="card shadow-sm border-0 bg-light">
                 <div class="card-body text-center">
                     <h5 class="card-title">👥 Total Users</h5>
                     <p class="display-6 text-info">{{ $totalUsers }}</p>
@@ -13,20 +13,20 @@
 
         <!-- Card: Total Tasks -->
         <div class="col-md-4 mb-4">
-            <div class="card shadow-sm border-0">
+            <div class="card shadow-sm border-0 bg-success">
                 <div class="card-body text-center">
-                    <h5 class="card-title">📝 Total Tasks</h5>
-                    <p class="display-6 text-success">{{ $totalTasks }}</p>
+                    <h5 class="card-title text-white">📝 Total Tasks</h5>
+                    <p class="display-6 text-success text-white">{{ $totalTasks }}</p>
                 </div>
             </div>
         </div>
 
         <!-- Card: Pending Tasks -->
         <div class="col-md-4 mb-4">
-            <div class="card shadow-sm border-0">
+            <div class="card shadow-sm border-0 bg-info">
                 <div class="card-body text-center">
-                    <h5 class="card-title">⏳ Pending Tasks</h5>
-                    <p class="display-6 text-warning">{{ $pendingTasks }}</p>
+                    <h5 class="card-title text-white">⏳ Pending Tasks</h5>
+                    <p class="display-6 text-warning text-white">{{ $pendingTasks }}</p>
                 </div>
             </div>
         </div>

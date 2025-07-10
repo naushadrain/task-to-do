@@ -21,6 +21,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminHomeController::class, 'index'])->name('admin.dashboard');
     Route::get('/admin/view-all-task', [ViewAllTaskController::class, 'index'])->name('all.task.index');
     Route::get('/admin/user-manage', [UserManagementController::class, 'index'])->name('user.manage.index');
+    Route::post('/admin/user/toggle-status', [UserManagementController::class, 'toggleStatus'])->name('admin.user.toggleStatus');
+
 });
 
 // User-only

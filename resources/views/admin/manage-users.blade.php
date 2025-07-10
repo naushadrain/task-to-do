@@ -24,16 +24,15 @@
                     <td>
                         {{$user->role}}
                     </td>
-                    <td>
-    @if($user->status == 1)
-        <button type="submit" class="btn btn-sm btn-success">Active</button>
-    @elseif($user->status == 0)
-        <button type="submit" class="btn btn-sm btn-info">Inactive</button>
-    @else
-        <!-- Optional: handle other status values -->
-        <button type="submit" class="btn btn-sm btn-secondary">Unknown</button>
-    @endif
+<td>
+    <button type="button"
+            class="btn btn-sm toggle-status-btn {{ $user->status ? 'btn-success' : 'btn-info' }}"
+            data-user-id="{{ $user->id }}"
+            data-status="{{ $user->status }}">
+        {{ $user->status ? 'Active' : 'Inactive' }}
+    </button>
 </td>
+
                 </tr>
             @empty
                 <tr>
@@ -43,4 +42,43 @@
         </tbody>
     </table>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.toggle-status-btn').click(function () {
+            const button = $(this);
+            const userId = button.data('user-id');
+            const currentStatus = button.data('status');
+
+            $.ajax({
+                url: "{{ route('admin.user.toggleStatus') }}",
+                method: "POST",
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    user_id: userId,
+                    status: currentStatus == 1 ? 0 : 1
+                },
+                success: function (response) {
+                    if (response.success) {
+                        // Update button text and style
+                        button.text(response.new_status_text);
+                        button.data('status', response.new_status);
+
+                        if (response.new_status == 1) {
+                            button.removeClass('btn-info btn-secondary').addClass('btn-success');
+                        } else {
+                            button.removeClass('btn-success btn-secondary').addClass('btn-info');
+                        }
+                    } else {
+                        alert('Something went wrong.');
+                    }
+                },
+                error: function () {
+                    alert('Request failed.');
+                }
+            });
+        });
+    });
+</script>
 @endsection

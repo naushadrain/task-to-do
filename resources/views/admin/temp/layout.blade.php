@@ -160,29 +160,7 @@
 <div class="position-sticky pt-3">
 <div class="list-group list-group-flush px-3">
 
-    <a href="#" class="list-group-item list-group-item-action bg-dark text-white border-0 py-3 text-decoration-none">
-        <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Dashboard</span>
-    </a>
-
-    <a href="#" class="list-group-item list-group-item-action bg-dark text-white border-0 py-3 text-decoration-none">
-        <i class="fas fa-users fa-fw me-3"></i><span>Users</span>
-    </a>
-
-    <a href="#" class="list-group-item list-group-item-action bg-dark text-white border-0 py-3 text-decoration-none">
-        <i class="fas fa-chart-line fa-fw me-3"></i><span>Analytics</span>
-    </a>
-
-    <a href="#" class="list-group-item list-group-item-action bg-dark text-white border-0 py-3 text-decoration-none">
-        <i class="fas fa-box-open fa-fw me-3"></i><span>Products</span>
-    </a>
-
-    <a href="#" class="list-group-item list-group-item-action bg-dark text-white border-0 py-3 text-decoration-none">
-        <i class="fas fa-cog fa-fw me-3"></i><span>Settings</span>
-    </a>
-
-    <a href="#" class="list-group-item list-group-item-action bg-dark text-white border-0 py-3 text-decoration-none">
-        <i class="fas fa-question-circle fa-fw me-3"></i><span>Help</span>
-    </a>
+    @include('admin.temp.side-bar')
 
 </div>
 </div>
