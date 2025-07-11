@@ -28,4 +28,12 @@ class ViewAllTaskController extends Controller
 
         return view('admin.partials.task-table', compact('tasks'))->render();
     }
+
+    public function destroy($id)
+    {
+        $task = Task::findOrFail($id);
+        $task->delete();
+
+        return redirect()->back()->with('success', 'Task deleted successfully.');
+    }
 }
