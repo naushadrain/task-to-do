@@ -35,7 +35,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
 Route::middleware(['auth', 'user'])->group(function () {
     Route::get('/user/dashboard', [UserHomeCOntroller::class, 'index'])->name('user.dashboard');
 
-    Route::get('/tasks', [TaskController::class, 'index'])->name('tasks.index');
+    Route::get('/my-tasks', [TaskController::class, 'index'])->name('my.tasks.index');
+    Route::post('/user/task/update-status/{id}', [TaskController::class, 'updateStatus'])->name('user.task.updateStatus');
+
     Route::post('/tasks', [TaskController::class, 'store'])->name('tasks.store');
     Route::post('/tasks/update-status', [TaskController::class, 'updateStatus'])->name('tasks.updateStatus');
 });
